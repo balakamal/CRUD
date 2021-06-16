@@ -23,7 +23,7 @@ namespace CRUD
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap-cosmos.css",
+                      "~/Content/bootstrap.css",
                       "~/Content/Site.css"));
         }
     }
