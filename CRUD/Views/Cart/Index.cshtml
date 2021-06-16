@@ -1,0 +1,30 @@
+﻿@model List<CRUD.Models.Cart>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Cart</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cart in Model)
+        {
+            <tr>
+                <td>@cart.ItemInCart.Name</td>
+                <td>@cart.ItemInCart.Price</td>
+                <td>@Html.ActionLink("Remove from Cart", "Delete", "Cart", new { id = cart.Id }, null)</td>
+               
+
+
+            </tr>
+        }
+    </tbody>
+</table>
+

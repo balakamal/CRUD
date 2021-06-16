@@ -1,0 +1,49 @@
+﻿@model List<CRUD.Models.FoodItem>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@if (ViewBag.IsAdmin)
+{
+    <h3>Welcome Admin</h3>
+    @Html.ActionLink("Add", "Add", "Hotel", null, new { @class = "btn btn-primary" })
+}
+else
+{
+    <h3>Welcome User    </h3>
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var foodItem in Model)
+        {
+            <tr>
+                <td>@foodItem.Name</td>
+                <td>@foodItem.Price</td>
+                <td>@foodItem.Category.Name</td>
+                @if (ViewBag.IsAdmin)
+                {
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "Hotel", new { id = foodItem.Id }, null) |
+                        @Html.ActionLink("Delete", "Delete", "Hotel", new { id = foodItem.Id }, null)
+                    </td>
+                }
+                else
+                {
+                    <td>@Html.ActionLink("Add to Cart", "Cart", "Hotel", new { id = foodItem.Id }, null)</td>
+                }
+
+
+            </tr>
+        }
+    </tbody>
+</table>
